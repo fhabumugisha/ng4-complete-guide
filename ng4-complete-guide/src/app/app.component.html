@@ -3,14 +3,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-header></app-header>       
+      <app-header (menuClicked)="onMenuChanged($event)"></app-header>       
     </div>    
   </div>
-<div class="row"><div class="col-md-12">&nbsp;</div> </div>
+<hr>
 
-<app-shopping-list></app-shopping-list>
-<div class="row"><div class="col-md-12">&nbsp;</div> </div>
-<app-recipe-list></app-recipe-list>
+<app-recipe-list *ngIf="activeMenu ==='Recipe Book'" ></app-recipe-list>
+<hr>
+<app-shopping-list *ngIf="activeMenu ==='Shopping List'" ></app-shopping-list>
+
+
   
 </div>
 

@@ -3,33 +3,28 @@
     <button class="btn btn-primary">New recipe</button>
   </div>
 </div>
-<div class="row"><div class="col-md-12">&nbsp;</div> </div>
+<hr>
+
 <div class="row">
-  <div class="col-md-6">
-
-    <ul class="list-group">
-      <li class="list-group-item disabled">Tomate</li>
-      <li class="list-group-item">Avocat</li>
-      <li class="list-group-item">Banane</li>
-      <li class="list-group-item">Mangue</li>
-      <li class="list-group-item">Kiwi</li>
-    </ul>
-  </div>
-
-  <div class="col-md-6">
-    <app-recipe-item></app-recipe-item>
-
-  </div>
-</div>
-<div class="card-deck" *ngFor="let recipe of recipes">
-    <div class="card">
-      <img class="card-img-top" src="{{recipe.imagePath}}" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title"> {{recipe.name}}</h4>
-        <p class="card-text">{{recipe.description}}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="col-md-4">
+    <div class="card-deck" *ngFor="let recipe of recipes">
+      <div class="card mb-3" style="max-width: 20rem;">
+        
+        <div class="card-body">
+          <h4 class="card-title"> {{recipe.name}}</h4>
+          <p class="card-text">{{recipe.description}}</p>
+          <a href="#" class="btn btn-primary">View details</a>
+        </div>
+        <img class="card-img-bottom" src="{{recipe.imagePath}}" alt="Card image cap">
       </div>
+     
+      
     </div>
-   
-    
   </div>
+
+  <div class="col-md-6">
+    <app-recipe-detail></app-recipe-detail>
+  </div>
+
+</div>
+
