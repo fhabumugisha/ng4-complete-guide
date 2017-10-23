@@ -1,19 +1,19 @@
 <div class="row">
-    <div class="col-xs-12">
+   
 
         <div class="card" >
                 <div class="card-header">
                         {{recipe.name}}
                       </div>
-            <img class="card-img-top" [src]="recipe.imagePath" alt="Card image cap">
+            <img class="card-img-top" [src]="recipe.imagePath" alt="Card image cap" style="max-width: 20rem;">
             <div class="card-body">
               <p class="card-text">{{recipe.description}}</p>
             
-              <div class="dropdown">
+              <div class="dropdown" appDropdown>
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage recipe
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">Add to shopping list</a>
                   <a class="dropdown-item" href="#">Edit recipe</a>
                   <a class="dropdown-item" href="#">Delete recipe</a>
@@ -31,4 +31,3 @@
           </div>
 
     </div>
-</div>
