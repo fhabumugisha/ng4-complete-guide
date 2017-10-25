@@ -1,3 +1,5 @@
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipesService } from './recipes/recipes.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
@@ -31,7 +33,7 @@ import { RecipesComponent } from './recipes/recipes.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [RecipesService, ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
