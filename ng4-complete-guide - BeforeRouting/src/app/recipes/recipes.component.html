@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-6">
+    <button class="btn btn-success">New recipe</button>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-4">
+    <app-recipe-list  ></app-recipe-list>
+  </div>
+
+  <div class="col-md-6">
+    <app-recipe-detail *ngIf="selectedRecipe; else noselectedRecipe "  [recipe]="selectedRecipe" ></app-recipe-detail>
+    <ng-template #noselectedRecipe>
+      <p>Please selet a recipe</p>
+
+    </ng-template>
+  </div>
+
+</div>
