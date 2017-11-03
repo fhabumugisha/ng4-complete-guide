@@ -7,8 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
     menus: [{ path: string, label: String }] = [
         { path: '', label: 'Home' },
-        { path: 'shopping-list', label: 'Shopping List' },
-        { path: 'recipe-book', label: 'Recipe Book' }
+        { path: 'recipes', label: 'Recipe Book' },
+        { path: 'shopping-list', label: 'Shopping List' }
+
     ];
     // @Output() menuClicked = new EventEmitter<{clickedMenu: string}>();
     constructor() { }

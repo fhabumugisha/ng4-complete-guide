@@ -7,7 +7,7 @@ import { ShoppingListService} from '../shopping-list/shopping-list.service';
 export class RecipeService {
 
    private recipes: Recipe[] = [
-        new Recipe('A test recipe', 
+        new Recipe(1, 'A test recipe', 
                   'This is a simple test',
                   'https://i.imgur.com/68cuwYi.jpg',
                   [
@@ -15,7 +15,7 @@ export class RecipeService {
                         new Ingredient('Banana', 3)
                   ]  
         ),
-         new Recipe('A test recipe 2', 
+         new Recipe(2, 'A test recipe 2', 
          'This is a simple test 2',
          'https://i.imgur.com/fK1BvcZ.jpg',
          [
@@ -32,4 +32,17 @@ getRecipes() {
     return this.recipes.slice();
 }
 
+
+getRecipe(id: number) {
+  const Recipe = this.recipes.find(
+    (r) => {
+      return r.id === id;
+    }
+  );
+  return Recipe;
+}
+
+addToShoppingList(ingredients: Ingredient[]) {
+  this.shoppingListService.addToShoppingList(ingredients);
+}
 }

@@ -11,11 +11,8 @@
   </div>
 
   <div class="col-md-6">
-    <app-recipe-detail *ngIf="selectedRecipe; else noselectedRecipe "  [recipe]="selectedRecipe" ></app-recipe-detail>
-    <ng-template #noselectedRecipe>
-      <p>Please selet a recipe</p>
-
-    </ng-template>
+    <router-outlet  ></router-outlet>
+   
   </div>
 
 </div>

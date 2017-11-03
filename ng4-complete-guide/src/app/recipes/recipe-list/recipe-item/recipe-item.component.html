@@ -3,7 +3,7 @@
   <div class="card-body">
     <h4 class="card-title"> {{recipe.name}}</h4>
     <p class="card-text">{{recipe.description}}</p>
-    <a href="#" class="btn btn-primary" (click)="onSelectRecipe()">View details</a>
+    <a class="btn btn-primary" style="cursor: pointer" [routerLink]="recipe.id">View details</a>
   </div>
   <img class="card-img-bottom" src="{{recipe.imagePath}}" alt="Card image cap">
 </div>
