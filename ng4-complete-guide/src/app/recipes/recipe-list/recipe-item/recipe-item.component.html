@@ -1,4 +1,4 @@
-<div class="card mb-3" style="max-width: 20rem;">
+<!-- <div class="card mb-3" style="max-width: 20rem;">
   
   <div class="card-body">
     <h4 class="card-title"> {{recipe.name}}</h4>
@@ -6,4 +6,17 @@
     <a class="btn btn-primary" style="cursor: pointer" [routerLink]="recipe.id">View details</a>
   </div>
   <img class="card-img-bottom" src="{{recipe.imagePath}}" alt="Card image cap">
-</div>
+</div> -->
+
+
+<a [routerLink]="recipe.id"
+  routerLinkActive="active"
+ class="list-group-item list-group-item-action flex-column align-items-start">
+<div class="media">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1"> {{recipe.name}}</h5>
+      {{recipe.description}}
+    </div>
+    <img class="ml-2" width="120" height="100" src="{{recipe.imagePath}}" alt="Generic placeholder image">
+  </div>
+</a>
