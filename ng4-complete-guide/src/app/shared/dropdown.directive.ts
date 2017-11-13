@@ -6,7 +6,7 @@ import { Directive, Renderer2, ElementRef, OnInit, Input, HostListener, HostBind
 export class DropdownDirective  {
   @HostBinding('class.show') isOpen = false;
   @HostListener('click')  toggleShow() {
-    console.log('show menu');
+//console.log('show menu');
     this.isOpen = !this.isOpen;
     const menu = this.el.nativeElement.querySelector('.dropdown-menu');
     if (this.isOpen ) {
