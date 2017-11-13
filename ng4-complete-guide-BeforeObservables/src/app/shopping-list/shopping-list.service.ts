@@ -1,9 +1,8 @@
 import { Ingredient } from './../shared/ingredient.model';
-import { OnInit } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { OnInit, EventEmitter } from '@angular/core';
 export class ShoppingListService implements OnInit {
 
-    ingredientCreated =  new Subject<Ingredient[]>();
+    ingredientCreated =  new EventEmitter<Ingredient[]>();
 
     ingredients: Ingredient[] = [
         new Ingredient('Avocado', 10),
@@ -22,7 +21,7 @@ export class ShoppingListService implements OnInit {
 
       addIngredient(ingredient: Ingredient) {
           this.ingredients.push(ingredient);
-          this.ingredientCreated.next(this.ingredients.slice());
+          this.ingredientCreated.emit(this.ingredients.slice());
       }
 
       addToShoppingList(newIngredients: Ingredient[]) {
@@ -35,7 +34,7 @@ export class ShoppingListService implements OnInit {
                 this.ingredients.push(i);
             }
         }
-        this.ingredientCreated.next(this.ingredients.slice());
+        this.ingredientCreated.emit(this.ingredients.slice());
       }
 
 
