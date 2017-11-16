@@ -1,0 +1,35 @@
+<div class="row">
+   
+
+        <div class="card" >
+                <div class="card-header">
+                        {{recipe.name}}
+                      </div>
+            <img class="card-img-top" [src]="recipe.imagePath" alt="Card image cap" style="max-width: 20rem;">
+            <div class="card-body">
+              <p class="card-text">{{recipe.description}}</p>
+            
+              <div class="dropdown" appDropdown>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage recipe
+                </button>
+                <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" style="cursor: pointer;" (click)="onAddToShoppingList(recipe.ingredients)">Add to shopping list</a>
+                  <a class="dropdown-item" style="cursor: pointer;"[routerLink]="['edit']" >Edit recipe</a>
+                  <a class="dropdown-item" style="cursor: pointer;">Delete recipe</a>
+                </div>
+              </div>
+
+              <!-- <a href="#" class="card-link">Add to shopping list</a>
+              <a href="#" class="card-link">Edit recipe</a>
+              <a href="#" class="card-link">Delete recipe</a> -->
+              
+            </div>
+            <div class="card-footer">
+                <ul class="list-group" >
+                  <li class="list-group-item " *ngFor="let i of recipe.ingredients"> {{i.name}} ({{i.amount}}) </li>
+                </ul>
+              </div>
+          </div>
+
+    </div>
