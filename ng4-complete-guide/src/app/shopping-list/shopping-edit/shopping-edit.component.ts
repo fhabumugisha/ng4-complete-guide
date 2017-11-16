@@ -50,5 +50,15 @@ editedItemIndex: number;
     this.editMode = false;
     this.ingredientForm.reset();
   }
+  onClear() {
+    this.ingredientForm.reset();
+    this.editMode = false;
+  }
 
+  onDelete() {
+    if( this.editedItemIndex !== null) {
+      this.shoppingListService.deleteIngredient(this.editedItemIndex);
+    }
+    this.onClear();
+  }
 }

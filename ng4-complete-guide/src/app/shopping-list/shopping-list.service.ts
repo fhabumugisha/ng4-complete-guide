@@ -2,7 +2,7 @@ import { Ingredient } from './../shared/ingredient.model';
 import { OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 export class ShoppingListService implements OnInit {
-  ingredientCreated = new Subject<Ingredient[]>();
+  ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
   ingredients: Ingredient[] = [
     new Ingredient('Avocado', 10),
@@ -21,14 +21,18 @@ export class ShoppingListService implements OnInit {
   }
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientCreated.next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   updateIngredient(index: number, newIngredient: Ingredient) {
      this.ingredients[index] =  newIngredient;
-     this.ingredientCreated.next(this.ingredients.slice());
+     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index);
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
   addToShoppingList(newIngredients: Ingredient[]) {
     for (const i of newIngredients) {
       if (this.ingredients.find(ing => ing.name === i.name)) {
@@ -40,6 +44,6 @@ export class ShoppingListService implements OnInit {
         this.ingredients.push(i);
       }
     }
-    this.ingredientCreated.next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
