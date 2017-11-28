@@ -13,10 +13,11 @@
         <br>
         <button class="btn btn-primary" (click)="onAddServer()">Add server</button>
         <hr>
+        <button class='btn btn-sm btn-success'> Sort</button>
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter: filteredStatus:'status'"
+          *ngFor="let server of servers | filter: filteredStatus:'status' | sort: 'name'"
           [ngClass]="getStatusClasses(server)">
           <span
             class="badge">
