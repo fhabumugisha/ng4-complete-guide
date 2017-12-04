@@ -1,10 +1,8 @@
-
 import { Ingredient } from './../shared/ingredient.model';
 import { Recipe } from './recipe-list/recipe.model';
 import { Injectable } from '@angular/core';
 import { ShoppingListService} from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs/Subject';
-
 
 @Injectable()
 export class RecipeService {
@@ -74,11 +72,4 @@ updateRecipe(id: number, newRecipe: Recipe) {
     this.recipes.splice(this.recipes.indexOf( recipeToDelete));
     this.recipesChanged.next(this.recipes.slice());
   }
-
-
-  saveRecipes(newRecipes: Recipe[]){
-    this.recipes =  newRecipes;
-    this.recipesChanged.next(this.recipes.slice());
-  }
-
 }

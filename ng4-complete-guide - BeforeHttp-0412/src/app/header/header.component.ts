@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { RecipeService } from '../recipes/recipe.service';
-import { DataStorageService } from '../shared/data-storage.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -14,21 +12,10 @@ export class HeaderComponent {
 
     ];
     // @Output() menuClicked = new EventEmitter<{clickedMenu: string}>();
-    constructor(private dataStorageService: DataStorageService) { }
+    constructor() { }
 
     /*  onMenuClicked(clickedItem: string) {
          console.log(clickedItem);
           this.menuClicked.emit({clickedMenu: clickedItem});
      } */
-
-     onSaveData(){
-        this.dataStorageService.storeRecipes().subscribe(
-          (response) => console.log(response),
-          (error) => console.log(error)
-        );
-     }
-
-     onFetchData(){
-      this.dataStorageService.getRecipes();
-     }
 }
