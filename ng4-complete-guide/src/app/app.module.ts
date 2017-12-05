@@ -25,6 +25,9 @@ import { RecipeEditComponent } from './recipes/recipe-list/recipe-edit/recipe-ed
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { HttpModule } from '@angular/http';
     HomeComponent,
     PageNotFoundComponent,
     RecipeEditComponent,
-    RecipeStartComponent
+    RecipeStartComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,7 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, ShoppingListService, DataStorageService],
+  providers: [RecipeService, ShoppingListService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
