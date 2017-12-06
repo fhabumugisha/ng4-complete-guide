@@ -4,6 +4,7 @@ import { Ingredient } from './../../../shared/ingredient.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -14,6 +15,7 @@ export class RecipeDetailComponent implements OnInit {
 
 
   constructor(private recipeService: RecipeService,
+    private authService: AuthService,
      private route: ActivatedRoute,
     private router: Router) { }
 

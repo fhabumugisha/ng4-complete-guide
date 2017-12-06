@@ -16,7 +16,9 @@
                 <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" style="cursor: pointer;" (click)="onAddToShoppingList(recipe.ingredients)">Add to shopping list</a>
                   <a class="dropdown-item" style="cursor: pointer;"[routerLink]="['edit']" >Edit recipe</a>
-                  <a class="dropdown-item" style="cursor: pointer;" (click)="onDelete()">Delete recipe</a>
+                  <a class="dropdown-item" style="cursor: pointer;"
+                        *ngIf="authService.isAuthenticated()"
+                       (click)="onDelete()">Delete recipe</a>
                 </div>
               </div>
 

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RecipeService } from '../recipes/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
@@ -14,7 +16,9 @@ export class HeaderComponent {
 
     ];
     // @Output() menuClicked = new EventEmitter<{clickedMenu: string}>();
-    constructor(private dataStorageService: DataStorageService) { }
+    constructor(private dataStorageService: DataStorageService,
+                private authService: AuthService,
+              private router: Router) { }
 
     /*  onMenuClicked(clickedItem: string) {
          console.log(clickedItem);
@@ -30,5 +34,10 @@ export class HeaderComponent {
 
      onFetchData(){
       this.dataStorageService.getRecipes();
+     }
+
+     onLogout() {
+       this.authService.logout();
+       this.router.navigate(['/']);
      }
 }

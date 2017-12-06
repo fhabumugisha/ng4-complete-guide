@@ -1,3 +1,4 @@
+import { AuthService } from '../auth/auth.service';
 
 import { Ingredient } from './../shared/ingredient.model';
 import { Recipe } from './recipe-list/recipe.model';

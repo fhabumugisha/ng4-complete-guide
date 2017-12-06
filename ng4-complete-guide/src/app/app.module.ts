@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth-guard.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -54,7 +55,13 @@ import { AuthService } from './auth/auth.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, ShoppingListService, DataStorageService, AuthService],
+  providers: [
+    RecipeService,
+    ShoppingListService,
+    DataStorageService,
+    AuthService,
+    AuthGuard
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
