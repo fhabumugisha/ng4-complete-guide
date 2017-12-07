@@ -1,6 +1,8 @@
+import { AuthModule } from './auth/auth.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 import { AuthGuard } from './auth/auth-guard.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,17 +12,12 @@ import { RecipeService } from './recipes/recipe.service';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent} from './header/header.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
+
+
 import { AuthService } from './auth/auth.service';
 import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
@@ -29,19 +26,16 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     HomeComponent,
-    PageNotFoundComponent,
-    SignupComponent,
-    SigninComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     AppRoutingModule,
     RecipesModule,
+    ShoppingListModule,
+    AuthModule,
     SharedModule
   ],
   providers: [
