@@ -1,14 +1,14 @@
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { RecipeService } from "./../../recipe.service";
-import { ActivatedRoute, Router, Params } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
-import { Recipe } from "../recipe.model";
-import { nearer } from "q";
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RecipeService } from './../../recipe.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Recipe } from '../recipe.model';
+import { nearer } from 'q';
 
 @Component({
-  selector: "app-recipe-edit",
-  templateUrl: "./recipe-edit.component.html",
-  styleUrls: ["./recipe-edit.component.css"]
+  selector: 'app-recipe-edit',
+  templateUrl: './recipe-edit.component.html',
+  styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
@@ -32,7 +32,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    const recipeIngredients = new FormArray([]);
     if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
       recipeName = recipe.name;
