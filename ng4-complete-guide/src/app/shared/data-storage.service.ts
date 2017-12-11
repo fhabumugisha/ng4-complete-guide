@@ -1,34 +1,47 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
 import { RecipeService } from './../recipes/recipe.service';
 import { Injectable } from '@angular/core';
-import { Http, Headers , Response} from '@angular/http';
+
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { Recipe } from '../recipes/recipe-list/recipe.model';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
+import { HttpRequest } from '@angular/common/http';
+
 @Injectable()
 export class DataStorageService {
 
-  constructor( private http: Http,
+  constructor( private http: HttpClient,
               private recipeService: RecipeService,
             private authService: AuthService) { }
 
-  storeRecipes(){
-    const token =  this.authService.getToken();
-    const headers = new Headers({'Content-type' : 'application/json'});
-    return this.http.put('https://fab-ng-recipe-book.firebaseio.com/recipes.json?auth=' + token,
+  storeRecipes() {
+
+    const headers = new HttpHeaders({'Content-type' : 'application/json'});
+    return this.http.put('https://fab-ng-recipe-book.firebaseio.com/recipes.json',
                           this.recipeService.getRecipes(),
-                           {headers: headers}
+                           {headers: headers  }
                           );
+    /*  const req = new HttpRequest('PUT',
+                              'https://fab-ng-recipe-book.firebaseio.com/recipes.json',
+                              this.recipeService.getRecipes(),
+                              {reportProgress: true,
+                                params: new HttpParams().set('auth', token)
+                              }
+                      );
+                    return  this.http.request(req); */
   }
 
   getRecipes() {
     const token =  this.authService.getToken();
-    return  this.http.get('https://fab-ng-recipe-book.firebaseio.com/recipes.json?auth=' + token)
+    return  this.http.get<Recipe[]>('https://fab-ng-recipe-book.firebaseio.com/recipes.json')
     .map(
-      (response: Response) => {
-        const recipes: Recipe[] = response.json();
+      (recipes) => {
          for(const recipe of recipes){
-           if(!recipe['ingredients']){
+           if(!recipe['ingredients']) {
             recipe['ingredients'] = [];
            }
 
@@ -42,7 +55,7 @@ export class DataStorageService {
         this.recipeService.saveRecipes(recipes);
 
     },
-     (error: Response) =>  console.log('Something went wrong')
+     (error: HttpErrorResponse) =>  console.log('Something went wrong')
   );
 
   }
