@@ -10,20 +10,28 @@ import { AuthModule } from './auth/auth.module'
 import { CoreModule } from './core/core.module';
 
 import { reducers } from 'app/store/app.reducers';
-
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from 'app/auth/store/auth.effects';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './../environments/environment';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+
+  BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule,
+   !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   bootstrap: [AppComponent]
 })
