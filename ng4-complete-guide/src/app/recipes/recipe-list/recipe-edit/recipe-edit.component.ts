@@ -3,7 +3,6 @@ import { RecipeService } from './../../recipe.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { nearer } from 'q';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -13,6 +12,7 @@ import { nearer } from 'q';
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
+
   recipeForm: FormGroup;
   constructor(
     private recipeService: RecipeService,
@@ -61,9 +61,8 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.editMode) {
-       const updatedRecipe = new Recipe(
+      const updatedRecipe = new Recipe(
         this.id,
         this.recipeForm.value['name'],
         this.recipeForm.value['description'],
@@ -97,16 +96,16 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-   /*  this.recipeForm.reset();
+    /*  this.recipeForm.reset();
     if(this.editMode){
       this.router.navigate(['recipes', this.id]);
     }else{
     this.router.navigate(['recipes']);
     } */
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  onDeleteIngredient(index: number){
+  onDeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
